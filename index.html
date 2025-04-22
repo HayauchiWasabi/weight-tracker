@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000">
+    <link rel="manifest" href="manifest.json">
+    <title>Weight Tracker</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 2rem;
+        }
+        input, button, textarea {
+            display: block;
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.5rem;
+            font-size: 1rem;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 0.5rem;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Daily Weight Tracker</h1>
+    <label for="weight">Today's Weight (kg)</label>
+    <input type="number" id="weight" step="0.1">
+
+    <label for="note">Notes (optional)</label>
+    <textarea id="note"></textarea>
+
+    <button onclick="saveEntry()">Save</button>
+
+    <h2>History</h2>
+    <ul id="log"></ul>
+
+    <script>
+        const log = JSON.parse(localStorage.getItem('weightLog')) || [];
+
+        function saveEntry() {
+            const weight = document.getElementById('weight').value;
+            const note = document.getElementById('note').value;
+
+            if (weight) {
+                const weight = parseFloat(document.getElementById('weight').value);
+                const note = document.getElementById('note').value;
+                const date = new Date().toLocaleDateString();
+
+                log.unshift({ date, weight, note });
+                localStorage.setItem('weightLog', JSON.stringify(log));
+                document.getElementById('weight').value = '';
+                document.getElementById('note').value = '';
+                renderLog();
+            } else {
+                alert('Please enter your weight');
+            }
+        }
+
+        function renderLog() {
+            const ul = document.getElementById('log');
+            ul.innerHTML = '';
+            log.forEach(entry => {
+                const li = document.createElement('li');
+                li.textContent = `${entry.date}: ${entry.weight} kg ${entry.note ? `- ${entry.note}` : ''}`;
+                ul.appendChild(li);
+            });
+        }
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(reg => console.log('Service Worker registered', reg))
+                    .catch(err => console.error('Service Worker registration failed', err));
+            });
+        }
+
+        renderLog();
+    </script>
+</body>
+</html>
