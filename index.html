@@ -3,44 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#000000">
+    <meta name="theme-color" content="#0b1d3a">
     <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="styles.css">
     <title>Weight Tracker</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            margin: 2rem;
-        }
-        input, button, textarea {
-            display: block;
-            margin-top: 1rem;
-            width: 100%;
-            padding: 0.5rem;
-            font-size: 1rem;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            padding: 0.5rem;
-            border-bottom: 1px solid #ccc;
-        }
-    </style>
 </head>
 
 <body>
-    <h1>Daily Weight Tracker</h1>
-    <label for="weight">Today's Weight (kg)</label>
-    <input type="number" id="weight" step="0.1">
+    <div class="card">
+        <h1>Daily Weight Tracker</h1>
+        <label for="weight">Today's Weight (kg)</label>
+        <input type="number" id="weight" step="0.1">
+    
+        <label for="note">Notes (optional)</label>
+        <textarea id="note"></textarea>
+    
+        <button onclick="saveEntry()">Save</button>
+    </div>
 
-    <label for="note">Notes (optional)</label>
-    <textarea id="note"></textarea>
-
-    <button onclick="saveEntry()">Save</button>
-
-    <h2>History</h2>
-    <ul id="log"></ul>
+    <div class="card">
+        <h2>History</h2>
+        <ul id="log"></ul>
+    </div>
 
     <script>
         const log = JSON.parse(localStorage.getItem('weightLog')) || [];
