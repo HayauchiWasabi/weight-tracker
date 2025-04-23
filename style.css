@@ -1,8 +1,33 @@
 :root {
-    --bg-color: #0b1d3a;
-    --card-color: #13294b;
-    --text-color: #ffffff;
-    --accent-color: #4d7cfe;
+    /* Pattern 1: Navy + Sky Blue (default) */
+    /* --bg-color: #1a1f2b;
+    --card-color: #2c3e50;
+    --text-color: #eaeaea;
+    --accent-color: #90caf9; */
+
+    /* Pattern 2: Steel Navy + Electric Blue */
+    /* --bg-color: #1a1f2b;
+    --card-color: #2c3e50;
+    --text-color: #eaeaea;
+    --accent-color: #2979ff; */
+
+    /* Pattern 3: Github Dark Style */
+    --bg-color: #0d1117;
+    --card-color: #161b22;
+    --text-color: #c9d1d9;
+    --accent-color: #2385f7;
+
+    /* Pattern 4: Blue-Purple Gradient Look */
+    /* --bg-color: #0f172a;
+    --card-color: #1e293b;
+    --text-color: #dbeafe;
+    --accent-color: #3b82f6; */
+
+    /* Pattern 5: Cyber Blue + Midnight */
+    /* --bg-color: #050d1f;
+    --card-color: #0c1e3b;
+    --text-color: #f0f8ff;
+    --accent-color: #00bfff; */
 }
 
 body {
@@ -35,6 +60,7 @@ label {
 
 input, button, textarea {
     width: 100%;
+    box-sizing: border-box;
     padding: 0.75rem;
     margin-top: 0.5rem;
     border: none;
@@ -64,4 +90,34 @@ li {
     padding: 0.75rem;
     margin-bottom: 0.5rem;
     border-radius: 0.5rem;
+}
+
+.modal {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #13294b;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    width: 90%;
+    max-width: 500px;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.modal .close {
+    float: right;
+    font-size: 1.5rem;
+    cursor: pointer;
 }
