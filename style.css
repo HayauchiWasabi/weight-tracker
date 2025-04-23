@@ -107,7 +107,7 @@ li {
 }
 
 .modal-content {
-    background-color: #13294b;
+    background-color: var(--card-color);
     padding: 1.5rem;
     border-radius: 1rem;
     width: 90%;
@@ -120,4 +120,25 @@ li {
     float: right;
     font-size: 1.5rem;
     cursor: pointer;
+}
+
+.admin-section {
+    margin-bottom: 1.5rem;
+}
+
+.admin-section h3 {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.25rem;
+}
+
+#themeSelect {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--card-color);
+    color: var(--text-color);
+    border: 1px solid rgba(255,255,255,0.1);
 }
